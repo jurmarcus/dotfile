@@ -7,6 +7,7 @@ in
     lib.mkEnableOption "Development & terminal (Homebrew casks)";
   config = lib.mkIf cfg.enable {
     homebrew.brews = [
+      "eza"
       "fzf"
       "mas"
       "neovim"
