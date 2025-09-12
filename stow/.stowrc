@@ -1,0 +1,5 @@
+# ~/.stowrc
+
+--target=~         # link into $HOME (tilde expands here)
+--verbose=2        # a little logging
+--no-folding       # don't symlink whole directories; safer for ~/.config

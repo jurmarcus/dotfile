@@ -1,0 +1,24 @@
+# One Perl regex per line (comments allowed)
+\.DS_Store
+(^|/)\.git($|/)
+(^|/)\.gitignore$
+(^|/)\.gitmodules$
+^/README(\..*)?$
+^/LICENSE(\..*)?$
+^/COPYING$
+
+# vcs & os junk
+(^|/)\.git(/|$)
+(^|/)\.DS_Store$
+(^|/)Thumbs\.db$
+
+# editor caches
+(^|/)\.idea(/|$)
+(^|/)\.vscode(/|$)
+(^|/)\.history(/|$)
+(^|/)\.#.*$
+
+# build outputs
+(^|/)target(/|$)
+(^|/)node_modules(/|$)
+(^|/)dist(/|$)
