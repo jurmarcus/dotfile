@@ -1,0 +1,5 @@
+# Completion + typing helpers
+zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions
+zdharma-continuum/fast-syntax-highlighting
+Aloxaf/fzf-tab
