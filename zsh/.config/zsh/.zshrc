@@ -11,11 +11,15 @@ source "$ZDOTDIR/plugin-manager.zsh"
 for f in completion.zsh tooling.zsh; do
   [[ -r "$ZDOTDIR/$f" ]] && source "$ZDOTDIR/$f"
 done
+
 # Aliases (your requested location)
 for f in "$ZDOTDIR"/aliases/*.zsh(N); do
   source "$f"
 done
 
-# Optional: autoload functions if you add any later
+# Functions
 fpath=("$ZDOTDIR/functions" $fpath)
-autoload -Uz "$ZDOTDIR"/functions/*(.:t) 2>/dev/null || true
+# autoload everything under $ZDOTDIR/functions
+for f in "$ZDOTDIR"/functions/*.zsh(N); do
+  autoload -Uz "${f:t:r}"
+done

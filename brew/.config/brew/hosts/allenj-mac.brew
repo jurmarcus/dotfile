@@ -1,0 +1,9 @@
+enable "utils"
+enable "developer"
+enable "security"
+
+enable "hardware"
+enable "browsers"
+
+enable "photography"
+enable "entertainment"
