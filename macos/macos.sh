@@ -35,5 +35,26 @@ defaults write com.apple.WindowManager EnableStandardClickToShowDesktop -bool fa
 defaults write com.apple.WindowManager EnableStageManagerClickToShowDesktop -bool true
 defaults write com.apple.WindowManager StageManagerShowRecentApps -bool false
 
+# Trackpad: tracking speed 10/10 (max)
+echo "Setting trackpad tracking speed to max (10/10)…"
+defaults write -g com.apple.trackpad.scaling -float 3.0
+
+# Trackpad: enable Tap to click
+echo "Enabling Tap to click…"
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults -currentHost write -g com.apple.mouse.tapBehavior -int 1
+defaults write -g com.apple.mouse.tapBehavior -int 1
+
+# Trackpad: enable three finger drag
+echo "Enabling three finger drag for trackpad…"
+defaults write com.apple.AppleMultitouchTrackpad Dragging -bool true
+defaults write com.apple.AppleMultitouchTrackpad DragLock -bool false
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Dragging -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad DragLock -bool false
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
+
 killall SystemUIServer
+killall Dock
 echo "✅ macOS settings applied. Some changes may require logout/restart."
