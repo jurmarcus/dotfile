@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-
 DOTFILES_GIT="https://github.com/jurmarcus/dotfiles.git"
 DOTFILES_DIR="${HOME}/dotfiles"
 STOW_TARGET="${HOME}"
@@ -58,5 +57,18 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_ENV_HINTS=1
 export HOMEBREW_NO_ANALYTICS=1
 brew bundle --global
+
+echo ">> Step 6: Apply macOS settings (if present)"
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  MACOS_SCRIPT="${DOTFILES_DIR}/macos/macos.sh"
+  if [[ -f "${MACOS_SCRIPT}" ]]; then
+    echo "Found macOS settings script at ${MACOS_SCRIPT}; executing…"
+    bash "${MACOS_SCRIPT}"
+  else
+    echo "No macOS settings script found at ${MACOS_SCRIPT}; skipping."
+  fi
+else
+  echo "Not on macOS (Darwin); skipping Step 6."
+fi
 
 echo "✅ Done. Open a new shell so your shellrc/zprofile changes take effect."
