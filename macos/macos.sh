@@ -7,6 +7,14 @@ echo "Applying macOS settings..."
 echo "Disabling Natural Scrolling..."
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
+# Remap Caps Lock to Control
+echo "Remapping Caps Lock to Control..."
+hidutil property --set '{
+    "UserKeyMapping": [
+        {"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x7000000E0}
+    ]
+}'
+
 # Disable Spotlight shortcuts
 echo "Disabling Spotlight shortcuts..."
 defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 "{ enabled = 0; }"
