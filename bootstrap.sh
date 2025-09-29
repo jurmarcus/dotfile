@@ -32,15 +32,7 @@ fi
 echo ">> Step 2: Install GNU Stow (via brew)"
 brew install stow
 
-echo ">> Step 3: Clone or update dotfiles repo"
-if [[ -d "${DOTFILES_DIR}/.git" ]]; then
-  echo "Repo exists at ${DOTFILES_DIR}; pulling latest…"
-  git -C "${DOTFILES_DIR}" pull --ff-only
-else
-  git clone "${DOTFILES_GIT}" "${DOTFILES_DIR}"
-fi
-
-echo ">> Step 4: Stow everything in repo root (first-level dirs only)"
+echo ">> Step 3: Stow everything in repo root (first-level dirs only)"
 pushd "${DOTFILES_DIR}" >/dev/null
 shopt -s nullglob
 for d in */; do
@@ -52,13 +44,13 @@ for d in */; do
 done
 popd >/dev/null
 
-echo ">> Step 5: Homebrew Bundle (global)"
+echo ">> Step 4: Homebrew Bundle (global)"
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_ENV_HINTS=1
 export HOMEBREW_NO_ANALYTICS=1
 brew bundle --global
 
-echo ">> Step 6: Apply macOS settings (if present)"
+echo ">> Step 5: Apply macOS settings (if present)"
 if [[ "$(uname -s)" == "Darwin" ]]; then
   MACOS_SCRIPT="${DOTFILES_DIR}/macos/macos.sh"
   if [[ -f "${MACOS_SCRIPT}" ]]; then
