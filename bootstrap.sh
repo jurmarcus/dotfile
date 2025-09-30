@@ -32,7 +32,7 @@ fi
 echo ">> Step 2: Install GNU Stow (via brew)"
 brew install stow
 
-echo ">> Step 3: Stow everything in repo root (first-level dirs only)"
+echo ">> Step 4: Stow everything in repo root (first-level dirs only)"
 pushd "${DOTFILES_DIR}" >/dev/null
 shopt -s nullglob
 for d in */; do
